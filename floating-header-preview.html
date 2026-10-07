@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Floating "Compact Card" Header Navigation | Stillmind Mental Health</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['Fraunces', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+          },
+          colors: {
+            forest: {
+              DEFAULT: '#16302B',
+              deep: '#16302B',
+              dark: '#0F231F',
+              hover: '#1E3F39',
+            },
+            offwhite: '#FAF8F5',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #F4F2EE;
+      min-height: 200vh;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .mobile-menu-drawer {
+      display: none;
+    }
+    .mobile-menu-drawer.is-open {
+      display: block;
+      animation: fadeInDown 0.2s ease-out forwards;
+    }
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body class="bg-[#F4F2EE] text-stone-900 antialiased">
+
+  <!-- ========================================================================= -->
+  <!-- FLOATING "COMPACT CARD" HEADER NAVIGATION                                  -->
+  <!-- ========================================================================= -->
+  <header class="fixed top-4 inset-x-0 z-50 flex justify-center px-4 pointer-events-none">
+    <div class="pointer-events-auto w-full max-w-6xl bg-[#FAF8F5]/95 backdrop-blur-md border border-stone-200/90 rounded-2xl shadow-md px-4 sm:px-6 py-2 sm:py-2.5 flex items-center justify-between gap-3 sm:gap-6 transition-all duration-300">
+      
+      <!-- 1. Left (Logo Area) -->
+      <a href="index.html" class="flex flex-col group select-none shrink-0" aria-label="Stillmind Mental Health Home">
+        <span class="font-serif text-xl sm:text-2xl font-normal tracking-tight text-[#16302B] leading-none transition-colors group-hover:text-[#28574E]">
+          Stillmind
+        </span>
+        <span class="text-[10px] sm:text-[11px] font-sans font-medium tracking-wider text-stone-500 uppercase leading-tight mt-1">
+          Mental Health
+        </span>
+      </a>
+
+      <!-- 2. Center (Navigation Links: Minimalist Icon stacked vertically above small, clean text) -->
+      <nav class="hidden md:flex items-center gap-1 lg:gap-2" aria-label="Primary Navigation">
+        
+        <!-- Services (Grid icon) -->
+        <a href="#services" class="flex flex-col items-center justify-center px-2.5 lg:px-3 py-1.5 rounded-xl text-stone-600 hover:text-stone-900 hover:bg-stone-200/60 transition-all duration-200 group">
+          <svg class="w-4 h-4 mb-1 text-stone-500 group-hover:text-[#16302B] transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="3" width="7" height="7" rx="1.5"></rect>
+            <rect x="14" y="3" width="7" height="7" rx="1.5"></rect>
+            <rect x="14" y="14" width="7" height="7" rx="1.5"></rect>
+            <rect x="3" y="14" width="7" height="7" rx="1.5"></rect>
+          </svg>
+          <span class="text-[11px] font-medium tracking-tight">Services</span>
+        </a>
+
+        <!-- Who We Help (Two users icon) -->
+        <a href="#who-we-help" class="flex flex-col items-center justify-center px-2.5 lg:px-3 py-1.5 rounded-xl text-stone-600 hover:text-stone-900 hover:bg-stone-200/60 transition-all duration-200 group">
+          <svg class="w-4 h-4 mb-1 text-stone-500 group-hover:text-[#16302B] transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
+          <span class="text-[11px] font-medium tracking-tight whitespace-nowrap">Who We Help</span>
+        </a>
+
+        <!-- Philosophy (Compass icon) -->
+        <a href="#philosophy" class="flex flex-col items-center justify-center px-2.5 lg:px-3 py-1.5 rounded-xl text-stone-600 hover:text-stone-900 hover:bg-stone-200/60 transition-all duration-200 group">
+          <svg class="w-4 h-4 mb-1 text-stone-500 group-hover:text-[#16302B] transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+          </svg>
+          <span class="text-[11px] font-medium tracking-tight">Philosophy</span>
+        </a>
+
+        <!-- Pricing (Heart/Shield icon) -->
+        <a href="#pricing" class="flex flex-col items-center justify-center px-2.5 lg:px-3 py-1.5 rounded-xl text-stone-600 hover:text-stone-900 hover:bg-stone-200/60 transition-all duration-200 group">
+          <svg class="w-4 h-4 mb-1 text-stone-500 group-hover:text-[#16302B] transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            <path d="m9 12 2 2 4-4"></path>
+          </svg>
+          <span class="text-[11px] font-medium tracking-tight">Pricing</span>
+        </a>
+
+        <!-- Locations (Map pin icon) -->
+        <a href="#locations" class="flex flex-col items-center justify-center px-2.5 lg:px-3 py-1.5 rounded-xl text-stone-600 hover:text-stone-900 hover:bg-stone-200/60 transition-all duration-200 group">
+          <svg class="w-4 h-4 mb-1 text-stone-500 group-hover:text-[#16302B] transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          <span class="text-[11px] font-medium tracking-tight">Locations</span>
+        </a>
+
+        <!-- Contact (Message bubble icon) -->
+        <a href="#contact" class="flex flex-col items-center justify-center px-2.5 lg:px-3 py-1.5 rounded-xl text-stone-600 hover:text-stone-900 hover:bg-stone-200/60 transition-all duration-200 group">
+          <svg class="w-4 h-4 mb-1 text-stone-500 group-hover:text-[#16302B] transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+          </svg>
+          <span class="text-[11px] font-medium tracking-tight">Contact</span>
+        </a>
+
+      </nav>
+
+      <!-- 3. Right (Call to Action Buttons: Two Pill-shaped rounded-full buttons side-by-side) -->
+      <div class="flex items-center gap-2 sm:gap-2.5 shrink-0">
+        <!-- Crisis 988 (Light gray background and dark text) -->
+        <a href="tel:988" class="inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-2 rounded-full bg-stone-200 hover:bg-stone-300 text-stone-800 text-xs sm:text-sm font-semibold tracking-tight transition-all duration-150 shadow-sm" title="988 Suicide & Crisis Lifeline (24/7)">
+          <span class="w-2 h-2 rounded-full bg-red-600 animate-pulse" aria-hidden="true"></span>
+          <span>Crisis 988</span>
+        </a>
+
+        <!-- Book Appointment (Dark forest green background and white text) -->
+        <a href="valant-portal-preview.html" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3.5 sm:px-5 py-2 rounded-full bg-[#16302B] hover:bg-[#1E3F39] text-white text-xs sm:text-sm font-semibold tracking-tight transition-all duration-150 shadow-sm hover:shadow" aria-label="Book Appointment in Valant Portal">
+          <span>Book Appointment</span>
+          <span class="text-xs" aria-hidden="true">↗</span>
+        </a>
+
+        <!-- Mobile Drawer Toggle -->
+        <button type="button" id="menuToggle" class="md:hidden flex items-center justify-center w-9 h-9 rounded-xl text-stone-700 hover:text-stone-900 hover:bg-stone-200/60 transition-colors" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobileMenu">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <line x1="3" y1="12" x2="21" y2="12"/>
+            <line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobileMenu" class="mobile-menu-drawer md:hidden absolute top-full left-4 right-4 mt-2 bg-[#FAF8F5]/98 backdrop-blur-lg border border-stone-200/90 rounded-2xl shadow-xl p-4 pointer-events-auto" aria-hidden="true">
+      <div class="grid grid-cols-3 gap-2 pb-3 mb-3 border-b border-stone-200">
+        <a href="#services" class="flex flex-col items-center justify-center p-2.5 rounded-xl text-stone-700 hover:bg-stone-200/60 transition-colors text-center">
+          <svg class="w-5 h-5 mb-1 text-stone-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="14" width="7" height="7" rx="1.5"></rect><rect x="3" y="14" width="7" height="7" rx="1.5"></rect></svg>
+          <span class="text-xs font-medium">Services</span>
+        </a>
+        <a href="#who-we-help" class="flex flex-col items-center justify-center p-2.5 rounded-xl text-stone-700 hover:bg-stone-200/60 transition-colors text-center">
+          <svg class="w-5 h-5 mb-1 text-stone-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          <span class="text-xs font-medium">Who We Help</span>
+        </a>
+        <a href="#philosophy" class="flex flex-col items-center justify-center p-2.5 rounded-xl text-stone-700 hover:bg-stone-200/60 transition-colors text-center">
+          <svg class="w-5 h-5 mb-1 text-stone-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
+          <span class="text-xs font-medium">Philosophy</span>
+        </a>
+        <a href="#pricing" class="flex flex-col items-center justify-center p-2.5 rounded-xl text-stone-700 hover:bg-stone-200/60 transition-colors text-center">
+          <svg class="w-5 h-5 mb-1 text-stone-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="m9 12 2 2 4-4"></path></svg>
+          <span class="text-xs font-medium">Pricing</span>
+        </a>
+        <a href="#locations" class="flex flex-col items-center justify-center p-2.5 rounded-xl text-stone-700 hover:bg-stone-200/60 transition-colors text-center">
+          <svg class="w-5 h-5 mb-1 text-stone-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          <span class="text-xs font-medium">Locations</span>
+        </a>
+        <a href="#contact" class="flex flex-col items-center justify-center p-2.5 rounded-xl text-stone-700 hover:bg-stone-200/60 transition-colors text-center">
+          <svg class="w-5 h-5 mb-1 text-stone-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+          <span class="text-xs font-medium">Contact</span>
+        </a>
+      </div>
+      <div class="flex flex-col gap-2 pt-1">
+        <a href="tel:988" class="flex items-center justify-center gap-2 py-2.5 rounded-full bg-stone-200 text-stone-800 text-sm font-semibold">
+          <span class="w-2 h-2 rounded-full bg-red-600 animate-pulse"></span>
+          <span>Crisis 988 Lifeline</span>
+        </a>
+        <a href="valant-portal-preview.html" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-1.5 py-2.5 rounded-full bg-[#16302B] text-white text-sm font-semibold">
+          <span>Book Appointment in Valant</span>
+          <span>↗</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Demo Content Below Header -->
+  <main class="max-w-4xl mx-auto pt-32 px-6">
+    <div class="bg-white rounded-3xl p-10 shadow-sm border border-stone-200">
+      <span class="text-xs font-semibold tracking-wider text-stone-400 uppercase">Interactive Component Preview</span>
+      <h1 class="font-serif text-4xl text-[#16302B] mt-2 mb-4">Floating "Compact Card" Navigation</h1>
+      <p class="text-stone-600 leading-relaxed text-base mb-6">
+        This preview displays the modern, floating "Compact Card" header navigation engineered with Tailwind CSS. It is contained within a single floating card with rounded corners (<code class="bg-stone-100 text-xs px-2 py-1 rounded">rounded-2xl</code>), an off-white background (<code class="bg-stone-100 text-xs px-2 py-1 rounded">bg-[#FAF8F5]</code>), and a soft drop shadow (<code class="bg-stone-100 text-xs px-2 py-1 rounded">shadow-md</code>).
+      </p>
+      <div class="grid sm:grid-cols-3 gap-4 pt-4 border-t border-stone-100 text-sm">
+        <div class="p-4 bg-stone-50 rounded-xl">
+          <strong class="block text-stone-900 font-semibold mb-1">1. Left Logo Area</strong>
+          <span class="text-stone-500 text-xs">Elegant serif "Stillmind" with stacked muted sans-serif "Mental Health" subtext.</span>
+        </div>
+        <div class="p-4 bg-stone-50 rounded-xl">
+          <strong class="block text-stone-900 font-semibold mb-1">2. Center Flex Nav</strong>
+          <span class="text-stone-500 text-xs">6 items with minimalist icons stacked vertically above text with subtle hover background.</span>
+        </div>
+        <div class="p-4 bg-stone-50 rounded-xl">
+          <strong class="block text-stone-900 font-semibold mb-1">3. Right Pill CTAs</strong>
+          <span class="text-stone-500 text-xs">Two rounded-full buttons: Light gray "Crisis 988" & dark forest green "Book Appointment".</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Mobile Drawer Toggle
+    const toggle = document.getElementById('menuToggle');
+    const menu = document.getElementById('mobileMenu');
+    if (toggle && menu) {
+      toggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = menu.classList.contains('is-open');
+        menu.classList.toggle('is-open', !isOpen);
+        toggle.setAttribute('aria-expanded', (!isOpen).toString());
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!menu.contains(e.target) && !toggle.contains(e.target)) {
+          menu.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valant Patient Intake & Scheduling | Stillmind Mental Health LLC</title>
+  <meta name="description" content="Secure, HIPAA-compliant appointment booking powered by Valant Behavioral Health EMR.">
+  <!-- Preconnect & Web Fonts for Zero-Waterfall Loading -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap">
+
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <style>
+    body {
+      background-color: #F3F5F4;
+    }
+    .portal-banner {
+      background-color: var(--color-forest-deep);
+      color: #FFFFFF;
+      padding: 1.25rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .portal-header-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .security-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      padding: 0.35rem 0.85rem;
+      border-radius: var(--radius-full);
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: #E2ECE8;
+    }
+    .valant-brand-pill {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #79D1B8;
+    }
+    .portal-main-box {
+      max-width: 880px;
+      margin: 2.5rem auto 4rem;
+      background: #FFFFFF;
+      border: 1px solid var(--color-stone);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+    }
+    .portal-body {
+      padding: 2.5rem;
+    }
+    .progress-bar-steps {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--color-stone);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .step-node {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.86rem;
+      font-weight: 600;
+      color: var(--color-text-muted);
+    }
+    .step-node.active {
+      color: var(--color-forest-deep);
+    }
+    .step-circle {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background-color: var(--color-stone);
+      color: var(--color-text-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+    .step-node.active .step-circle {
+      background-color: var(--color-forest-deep);
+      color: #FFFFFF;
+    }
+    .service-options-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.25rem;
+      margin: 1.5rem 0 2rem;
+    }
+    .service-option-card {
+      border: 1.5px solid var(--color-stone);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      background-color: #FFFFFF;
+    }
+    .service-option-card:hover, .service-option-card.selected {
+      border-color: var(--color-sage);
+      background-color: var(--color-sage-light);
+    }
+    .service-option-card h4 {
+      font-size: 1rem;
+      color: var(--color-forest-deep);
+      margin-bottom: 0.35rem;
+    }
+    .service-option-card p {
+      font-size: 0.82rem;
+      color: var(--color-text-secondary);
+    }
+    .format-pills {
+      display: flex;
+      gap: 1rem;
+      margin: 1.25rem 0 2rem;
+    }
+    .format-btn {
+      padding: 0.75rem 1.25rem;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--color-stone-border);
+      background: #FFFFFF;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--color-text-secondary);
+      cursor: pointer;
+    }
+    .format-btn.active {
+      background-color: var(--color-forest-deep);
+      color: #FFFFFF;
+      border-color: var(--color-forest-deep);
+    }
+    .slots-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 0.85rem;
+      margin: 1.5rem 0;
+    }
+    .slot-pill {
+      border: 1px solid var(--color-stone-border);
+      background: #FFFFFF;
+      padding: 0.65rem;
+      border-radius: var(--radius-sm);
+      text-align: center;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--color-forest-deep);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+    .slot-pill:hover, .slot-pill.active {
+      background-color: var(--color-sage);
+      color: #FFFFFF;
+      border-color: var(--color-sage);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Security Header -->
+  <header class="portal-banner">
+    <div class="container portal-header-flex">
+      <div>
+        <div class="valant-brand-pill">Valant Behavioral Health · Patient Portal</div>
+        <h1 style="font-family: var(--font-serif); font-size: 1.35rem; font-weight: 500; margin: 0; color: #FFFFFF;">Stillmind Mental Health LLC — Intake Portal Sandbox</h1>
+      </div>
+      <div class="security-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/>
+        </svg>
+        <span>256-Bit SSL · HIPAA Encrypted</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="portal-main-box">
+      <div class="portal-body">
+
+        <!-- Progress Steps -->
+        <div class="progress-bar-steps">
+          <div class="step-node active">
+            <span class="step-circle">1</span>
+            <span>Select Care</span>
+          </div>
+          <div class="step-node active">
+            <span class="step-circle">2</span>
+            <span>Care Format</span>
+          </div>
+          <div class="step-node active">
+            <span class="step-circle">3</span>
+            <span>Choose Date</span>
+          </div>
+          <div class="step-node">
+            <span class="step-circle">4</span>
+            <span>Intake Details</span>
+          </div>
+        </div>
+
+        <h2 style="font-size: 1.6rem; margin-bottom: 0.4rem; color: var(--color-forest-deep);">Select Service Type</h2>
+        <p style="font-size: 0.92rem; color: var(--color-text-secondary); margin-bottom: 1.5rem;">
+          Choose the behavioral health care that matches your or your family's needs.
+        </p>
+
+        <div class="service-options-grid" role="radiogroup" aria-label="Available Clinical Services">
+          <div class="service-option-card selected" data-service-select="adhd-eval" tabindex="0" role="radio" aria-checked="true">
+            <h4>ADHD Comprehensive Evaluation</h4>
+            <p>90 Min · Diagnostic testing & interview for children through adults.</p>
+          </div>
+          <div class="service-option-card" data-service-select="child-therapy" tabindex="0" role="radio" aria-checked="false">
+            <h4>Child &amp; Adolescent Therapy</h4>
+            <p>50 Min · Emotion regulation, family collaboration, and support.</p>
+          </div>
+          <div class="service-option-card" data-service-select="adult-therapy" tabindex="0" role="radio" aria-checked="false">
+            <h4>Adult Psychotherapy</h4>
+            <p>50 Min · Evidence-based therapy for mood, anxiety, and transitions.</p>
+          </div>
+          <div class="service-option-card" data-service-select="med-management" tabindex="0" role="radio" aria-checked="false">
+            <h4>Medication Management</h4>
+            <p>60 Min · Psychiatric assessment & collaborative pharmacotherapy.</p>
+          </div>
+          <div class="service-option-card" data-service-select="trauma-care" tabindex="0" role="radio" aria-checked="false">
+            <h4>Trauma-Informed Care</h4>
+            <p>50 Min · Paced somatic stabilization & nervous system regulation.</p>
+          </div>
+        </div>
+
+        <h3 style="font-size: 1.25rem; margin-top: 2rem; margin-bottom: 0.5rem; color: var(--color-forest-deep);">Preferred Appointment Format</h3>
+        <div class="format-pills" role="radiogroup" aria-label="Care Setting">
+          <button type="button" class="format-btn active" role="radio" aria-checked="true">In-Person (Indianapolis Clinic)</button>
+          <button type="button" class="format-btn" role="radio" aria-checked="false">Statewide Telehealth (Indiana)</button>
+        </div>
+
+        <h3 style="font-size: 1.25rem; margin-top: 2rem; margin-bottom: 0.5rem; color: var(--color-forest-deep);">Available Intake Openings (Upcoming Business Days)</h3>
+        <div class="slots-grid" role="radiogroup" aria-label="Available Appointment Slots">
+          <div class="slot-pill active" tabindex="0" role="radio" aria-checked="true">Mon 9:30 AM</div>
+          <div class="slot-pill" tabindex="0" role="radio" aria-checked="false">Mon 1:30 PM</div>
+          <div class="slot-pill" tabindex="0" role="radio" aria-checked="false">Tue 11:00 AM</div>
+          <div class="slot-pill" tabindex="0" role="radio" aria-checked="false">Tue 3:00 PM</div>
+          <div class="slot-pill" tabindex="0" role="radio" aria-checked="false">Wed 10:00 AM</div>
+          <div class="slot-pill" tabindex="0" role="radio" aria-checked="false">Wed 2:30 PM</div>
+          <div class="slot-pill" tabindex="0" role="radio" aria-checked="false">Thu 9:00 AM</div>
+          <div class="slot-pill" tabindex="0" role="radio" aria-checked="false">Thu 1:00 PM</div>
+        </div>
+
+        <div style="background-color: var(--color-bg-warm); border: 1px solid var(--color-stone); border-radius: var(--radius-md); padding: 1.5rem; margin-top: 2.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <div style="font-weight: 600; color: var(--color-forest-deep); font-size: 0.98rem;">Ready to proceed to Valant Intake Forms?</div>
+            <div style="font-size: 0.82rem; color: var(--color-text-secondary);">Your clinical information is collected directly within Valant's encrypted portal.</div>
+          </div>
+          <button type="button" class="btn btn-primary" onclick="alert('In the production deployment with signed BAA, clicking Continue takes the patient into Valant\'s official demographic and insurance verification screens.');">
+            Continue to Secure Intake →
+          </button>
+        </div>
+
+        <div style="margin-top: 2rem; text-align: center;">
+          <a href="index.html" style="font-size: 0.85rem; color: var(--color-text-muted); text-decoration: underline;">
+            ← Return to Stillmind Mental Health main site
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Handle interactive card selection with keyboard support
+    function setupRadioGroup(elements, onSelect) {
+      elements.forEach(el => {
+        const select = () => {
+          elements.forEach(item => {
+            item.classList.remove('selected', 'active');
+            item.setAttribute('aria-checked', 'false');
+          });
+          el.classList.add(el.classList.contains('format-btn') ? 'active' : (el.classList.contains('slot-pill') ? 'active' : 'selected'));
+          el.setAttribute('aria-checked', 'true');
+          if (onSelect) onSelect(el);
+        };
+
+        el.addEventListener('click', select);
+        el.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            select();
+          }
+        });
+      });
+    }
+
+    const serviceCards = document.querySelectorAll('.service-option-card');
+    const formatBtns = document.querySelectorAll('.format-btn');
+    const slotPills = document.querySelectorAll('.slot-pill');
+
+    setupRadioGroup(serviceCards);
+    setupRadioGroup(formatBtns);
+    setupRadioGroup(slotPills);
+
+    // Safe URL Parameter Reader with CSS.escape() and allowlisting
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const serviceParam = params.get('service');
+      const locParam = params.get('loc');
+      const ALLOWED_SERVICES = ['adhd-eval', 'child-therapy', 'adult-therapy', 'med-management', 'trauma-care'];
+
+      if (serviceParam && ALLOWED_SERVICES.includes(serviceParam)) {
+        const safeSelector = `[data-service-select="${CSS.escape(serviceParam)}"]`;
+        const match = document.querySelector(safeSelector);
+        if (match) {
+          serviceCards.forEach(c => {
+            c.classList.remove('selected');
+            c.setAttribute('aria-checked', 'false');
+          });
+          match.classList.add('selected');
+          match.setAttribute('aria-checked', 'true');
+        }
+      }
+
+      if (locParam === 'telehealth' && formatBtns[1]) {
+        formatBtns.forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-checked', 'false');
+        });
+        formatBtns[1].classList.add('active');
+        formatBtns[1].setAttribute('aria-checked', 'true');
+      }
+    } catch (err) {
+      console.warn('URL parameter handling exception:', err);
+    }
+  </script>
+</body>
+</html>

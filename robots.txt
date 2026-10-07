@@ -1,0 +1,7 @@
+# Stillmind Mental Health LLC - Robots Configuration
+User-agent: *
+Allow: /
+Disallow: /valant-portal-preview.html
+Disallow: /api/
+
+Sitemap: https://stillmindmentalhealth.com/sitemap.xml
